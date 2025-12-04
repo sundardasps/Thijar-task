@@ -1,0 +1,87 @@
+{
+  "info": {
+    "name": "Cloudinary Image API",
+    "_postman_id": "f1e69f59-2d4b-4d3b-8137-1c5fe3b4d9a9",
+    "description": "APIs for uploading and deleting images with authentication",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Upload Image",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "type": "text",
+            "description": "JWT auth token"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file",
+              "description": "Select image file to upload"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseUrl}}/upload",
+          "host": ["{{baseUrl}}"],
+          "path": ["upload"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Image",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "type": "text",
+            "description": "JWT auth token"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"publicId\": \"your-public-id-here\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/delete",
+          "host": ["{{baseUrl}}"],
+          "path": ["delete"]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000/api/cloudinary",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "",
+      "type": "string",
+      "description": "JWT token for authorization"
+    }
+  ]
+}

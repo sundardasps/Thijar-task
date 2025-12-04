@@ -1,0 +1,105 @@
+{
+  "info": {
+    "name": "Product API",
+    "_postman_id": "product-api-collection",
+    "description": "Postman collection for product routes with auth, validation, and CRUD operations",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Product",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}", "type": "text" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "url": { "raw": "{{baseUrl}}/api/products", "host": ["{{baseUrl}}"], "path": ["api","products"] },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Sample Product\",\n  \"barcode\": \"123456789\",\n  \"itemGroup\": \"groupId\",\n  \"price\": 100,\n  \"purchasePrice\": 80,\n  \"stockQty\": 50,\n  \"unit\": \"pcs\",\n  \"taxPercent\": 18,\n  \"brand\": \"SampleBrand\",\n  \"isActive\": true\n}"
+        }
+      }
+    },
+    {
+      "name": "Get Products (Paginated)",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token}}", "type": "text" }],
+        "url": {
+          "raw": "{{baseUrl}}/api/products?limit=10&page=1&search=sample",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "products"],
+          "query": [
+            { "key": "limit", "value": "10" },
+            { "key": "page", "value": "1" },
+            { "key": "search", "value": "sample" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Products Infinite",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token}}", "type": "text" }],
+        "url": {
+          "raw": "{{baseUrl}}/api/products/infinite?limit=20&categoryId=groupId&cursor=cursorId&search=sample",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "products", "infinite"],
+          "query": [
+            { "key": "limit", "value": "20" },
+            { "key": "categoryId", "value": "groupId" },
+            { "key": "cursor", "value": "cursorId" },
+            { "key": "search", "value": "sample" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Product By ID",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token}}", "type": "text" }],
+        "url": { "raw": "{{baseUrl}}/api/products/{{productId}}", "host": ["{{baseUrl}}"], "path": ["api", "products", "{{productId}}"] }
+      }
+    },
+    {
+      "name": "Update Product",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}", "type": "text" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "url": { "raw": "{{baseUrl}}/api/products/{{productId}}", "host": ["{{baseUrl}}"], "path": ["api", "products", "{{productId}}"] },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"price\": 110,\n  \"stockQty\": 60\n}"
+        }
+      }
+    },
+    {
+      "name": "Delete Product",
+      "request": {
+        "method": "DELETE",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token}}", "type": "text" }],
+        "url": { "raw": "{{baseUrl}}/api/products/{{productId}}", "host": ["{{baseUrl}}"], "path": ["api", "products", "{{productId}}"] }
+      }
+    },
+    {
+      "name": "Get Product By Barcode",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token}}", "type": "text" }],
+        "url": { "raw": "{{baseUrl}}/api/products/barcode/{{barcode}}", "host": ["{{baseUrl}}"], "path": ["api", "products", "barcode", "{{barcode}}"] }
+      }
+    }
+  ],
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:5000" },
+    { "key": "token", "value": "" },
+    { "key": "productId", "value": "" },
+    { "key": "barcode", "value": "" }
+  ]
+}
