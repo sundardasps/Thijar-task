@@ -90,8 +90,8 @@ CLOUDINARY_FOLDER=your_folder
 ### Frontend `.env`
 ```env
 VITE_API_URL=http://localhost:5000/api/
-VITE_CLOUDINARY_CLOUD=doxs8nqdr
-VITE_CLOUDINARY_PRESET=ojuymtsr
+VITE_CLOUDINARY_CLOUD=""
+VITE_CLOUDINARY_PRESET=""
 ```
 
 ## 🌐 Running the App
