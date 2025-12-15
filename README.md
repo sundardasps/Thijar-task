@@ -81,7 +81,7 @@ JWT_SECRET=your-super-secret-key
 JWT_EXPIRES_IN=1d
 
 # Cloudinary
-CLOUDINARY_CLOUD_NAME=doxs8nqdr
+CLOUDINARY_CLOUD_NAME=your_cloude_name
 CLOUDINARY_API_KEY=your_api_key
 CLOUDINARY_API_SECRET=your_api_secret
 CLOUDINARY_FOLDER=your_folder
